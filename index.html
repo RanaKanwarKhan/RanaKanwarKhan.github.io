@@ -70,19 +70,26 @@
     margin:0 auto;
   }
 
-  /* HERO */
-  .hero{
+/* HERO with turbine background */
+.hero{
+    height:calc(100vh - 64px);
+    margin-top:64px;
     display:flex;
-    gap:24px;
     align-items:center;
-    background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.02));
-    padding:22px;
-    border-radius:14px;
-    box-shadow:0 12px 40px rgba(6,18,28,0.06);
-    border:1px solid rgba(2,10,18,0.04);
-    margin-bottom:22px;
-    backdrop-filter: blur(4px);
-  }
+    justify-content:center;
+    padding:28px;
+
+    background: 
+        linear-gradient(
+            rgba(10,20,40,0.75),
+            rgba(10,20,40,0.85)
+        ),
+        url("turbine.jpg") center/cover no-repeat;
+
+    color:white;
+    text-align:center;
+}
+
   /* Slightly tilted profile photo with accent border */
   .photo-frame{
     width:180px; height:180px; display:flex; align-items:center; justify-content:center;
@@ -398,4 +405,5 @@
 </script>
 </body>
 </html>
+
 
