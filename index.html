@@ -3,528 +3,333 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Kanwar Abdul Rehman — Professional CV</title>
+<title>Kanwar Abdul Rehman — Portfolio</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
-  :root{
-    --nav:#051627;
-    --accent:#17a398;
-    --muted:#6f7f8a;
-    --card:#ffffff;
-    --bg:#f3f6f8;
-  }
-  *{box-sizing:border-box}
-  body{
-    margin:0;
-    font-family:'Inter',system-ui,Segoe UI,Arial,sans-serif;
-    background:linear-gradient(180deg,#f7fbfc,#eef4f6);
-    color:#022b3a;
-    -webkit-font-smoothing:antialiased;
-  }
-
-  /* Layout */
-  .layout{display:flex; min-height:100vh}
-  aside.sidebar{
-    width:250px;
-    min-width:200px;
-    background:linear-gradient(180deg,var(--nav), #072235);
-    color:white;
-    padding:28px 18px;
-    display:flex;
-    flex-direction:column;
-    gap:18px;
-    position:sticky;
-    top:0;
-    height:100vh;
-    align-items:flex-start;
-  }
-  .brand{
-    font-weight:700;
-    font-size:18px;
-    letter-spacing:0.6px;
-  }
-  .subtitle{font-size:13px; color:rgba(255,255,255,0.9); margin-top:4px}
-
-  nav.sidenav{display:flex; flex-direction:column; gap:6px; margin-top:18px; width:100%}
-  nav.sidenav button{
-    background:transparent;
-    color:rgba(255,255,255,0.95);
-    border:0;
-    text-align:left;
-    padding:10px 12px;
-    border-radius:8px;
-    font-weight:600;
-    cursor:pointer;
-    transition:all .14s;
-    width:100%;
-  }
-  nav.sidenav button:hover{ background:rgba(255,255,255,0.06); transform:translateX(6px) }
-  nav.sidenav button.active{ background:var(--accent); color:white; box-shadow:0 8px 22px rgba(23,163,152,0.12) }
-
-  .sidebar-footer{ margin-top:auto; font-size:13px; color:rgba(255,255,255,0.85) }
-
-  main.content{
-    flex:1;
-    padding:36px;
-    max-width:1100px;
-    margin:0 auto;
-  }
-
-
-/* ========== Improved Professional Hero ========== */
-
-/* ===== Upgraded Professional Hero ===== */
-.hero {
-    position: relative;
-    height: calc(100vh - 64px);
-    margin-top: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
-    color: white;
-    text-align: left;
-
-    /* Background with darker overlay + subtle parallax */
-    background:
-        linear-gradient(rgba(5,15,35,0.85), rgba(5,15,35,0.95)),
-        url("bg-turbine.jpg") center/cover no-repeat;
-    background-attachment: fixed;
-    transition: background 0.3s ease;
+/* ---------------- PRINT ---------------- */
+@media print {
+    body { margin: 0; padding: 0; }
+    .page-border { box-sizing: border-box; border: 12px solid #1A4B7A; margin: 20px; padding: 30px; min-height: 95vh; break-after: page; }
+    .section, .menu { background: white !important; }
+    .title-page { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
 
-.hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08), transparent 60%);
-    pointer-events: none;
+/* ---------------- VARIABLES ---------------- */
+:root{
+  --primary:#1E90FF;
+  --nav:#0B3C5D;
+  --accent:#7DDA58;
+  --muted:#7b8896;
+  --card:#F7F9FA;
+  --bg:#f0f4f8;
+  --text:#14202b;
+  --glass: rgba(255,255,255,0.7);
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  font-family:'Inter',system-ui,Segoe UI,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
 }
 
-.hero-container {
-    position: relative;
-    display: flex;
-    align-items: flex-start;
-    gap: 40px;
-    max-width: 1100px;
-    width: 100%;
-    padding-top: 60px;
+/* ---------------- NAV ---------------- */
+.nav{
+  position:fixed;
+  top:0; left:0; right:0;
+  height:64px;
+  background:linear-gradient(90deg,var(--nav),#071a2a 120%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:1200;
+  box-shadow:0 6px 18px rgba(0,0,0,0.15);
+  gap:12px;
+  padding:0 20px;
+}
+.nav .logo{
+  color:white;
+  font-weight:700;
+  letter-spacing:0.2px;
+  margin-right:30px;
+  font-size:18px;
+}
+.nav .links{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+.nav a{
+  color:rgba(255,255,255,0.95);
+  text-decoration:none;
+  padding:8px 14px;
+  border-radius:8px;
+  font-weight:600;
+  font-size:14px;
+  transition:all .2s ease;
+}
+.nav a.active, .nav a:hover{
+  background: white;
+  color:var(--nav);
+  transform:translateY(-2px);
 }
 
-/* Profile Photo */
-.hero-photo img {
-    width: 240px;
-    height: 240px;
-    object-fit: cover;
-    border-radius: 18px;
-    border: 4px solid rgba(255,255,255,0.2);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 15px rgba(23,163,152,0.3);
-    transition: transform 0.3s;
+/* ---------------- HERO ---------------- */
+.hero{
+  height:calc(100vh - 64px);
+  margin-top:64px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:28px;
+  background:linear-gradient(180deg,#10283f 0%, #11384f 50%, rgba(17,56,79,0.8) 100%);
+  color:white;
+  text-align:center;
 }
-.hero-photo img:hover {
-    transform: scale(1.03);
+.hero .card{
+  width:min(1100px,96%);
+  display:grid;
+  grid-template-columns: 220px 1fr;
+  gap:28px;
+  align-items:center;
+  background: rgba(255,255,255,0.05);
+  padding:28px;
+  border-radius:14px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.45);
+  border:1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(10px);
 }
+.avatar{
+  width:200px; height:200px; border-radius:12px; overflow:hidden;
+  background:linear-gradient(135deg,#e6eef9,#cde6ff);
+  display:flex; align-items:center; justify-content:center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  border:4px solid rgba(255,255,255,0.08);
+}
+.avatar img{width:100%; height:100%; object-fit:cover; display:block}
 
-/* Text */
-.hero-text { max-width: 650px; }
-.hero-name {
-    font-size: 56px;
-    font-weight: 800;
-    letter-spacing: -1px;
-    color: #ffffff;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
-    margin: 0 0 12px;
+.hero h1{margin:0; font-size:36px; font-weight:700; letter-spacing:-0.4px}
+.hero p.lead{margin:8px 0 14px; color:rgba(255,255,255,0.9); font-weight:500; font-size:16px;}
+.hero .meta{color:rgba(255,255,255,0.85); font-size:14px; margin-bottom:6px;}
+.hero .actions{margin-top:18px; display:flex; gap:12px; justify-content:center;}
+.btn{
+  padding:10px 18px; border-radius:10px; font-weight:600; text-decoration:none; cursor:pointer;
+  display:inline-flex; gap:10px; align-items:center; border:0;
+  transition:transform .16s ease, box-shadow .16s;
 }
-.hero-title {
-    font-size: 24px;
-    font-weight: 600;
-    margin: 0 0 18px;
-    color: #a0d8ff;
-}
-.hero-sub {
-    font-size: 18px;
-    opacity: 0.9;
-    margin-bottom: 12px;
-}
-.hero-meta {
-    font-size: 16px;
-    margin-top: 5px;
-    color: #d8ebff;
-}
+.btn.primary{background:var(--accent); color:white; box-shadow:0 6px 18px rgba(23,105,167,0.25);}
+.btn.ghost{background:rgba(255,255,255,0.08); color:white; border:1px solid rgba(255,255,255,0.1);}
+.btn:hover{transform:translateY(-3px); box-shadow:0 10px 25px rgba(0,0,0,0.35);}
 
-/* Buttons */
-.hero-buttons {
-    margin-top: 20px;
-    display: flex;
-    gap: 14px;
+/* ---------------- MAIN ---------------- */
+main{
+  padding:48px 16px 80px;
+  max-width:1100px;
+  margin:0 auto;
 }
+.section{
+  display:none;
+  background:var(--card);
+  border-radius:14px;
+  padding:32px;
+  margin-bottom:32px;
+  box-shadow:0 12px 30px rgba(0,0,0,0.06);
+  border:1px solid rgba(0,0,0,0.04);
+  transition:all .36s ease;
+}
+.section.active{display:block}
+.section h2{margin-top:0; color:var(--nav); font-size:24px; margin-bottom:12px;}
+.muted{color:var(--muted); font-size:14px; margin-bottom:12px}
+.two-col{display:grid; grid-template-columns: 1fr 1fr; gap:20px;}
+ul.clean{padding-left:18px; margin:12px 0}
+li{margin:8px 0; line-height:1.6}
 
-.btn.primary {
-    background: linear-gradient(135deg, #17a398, #7dd1c1);
-    border: none;
-    color: white;
-    font-weight: 700;
-    padding: 12px 22px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(23,163,152,0.35);
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+/* Certificates list */
+.cert-list{display:flex; flex-direction:column; gap:10px}
+.cert-item{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 16px; border-radius:12px; background:#ffffff;
+  border:1px solid rgba(9,30,63,0.08); box-shadow:0 6px 15px rgba(0,0,0,0.05);
 }
-.btn.primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 28px rgba(23,163,152,0.45);
-}
+.cert-item a{color:var(--primary); text-decoration:none; font-weight:600}
 
-.btn.outline {
-    background: transparent;
-    border: 2px solid #7dd1c1;
-    color: #7dd1c1;
-    font-weight: 700;
-    padding: 12px 22px;
-    border-radius: 12px;
-    transition: background 0.2s, color 0.2s;
-}
-.btn.outline:hover {
-    background: #7dd1c1;
-    color: #0b1b2d;
-}
+/* Back buttons */
+.back-home{display:inline-block; margin-top:20px; text-decoration:none; padding:10px 16px; background:#0f2540; color:white; border-radius:10px; font-weight:600; transition:all .2s ease;}
+.back-home:hover{background:#142b50; transform:translateY(-2px);}
 
 /* Responsive */
-@media (max-width:980px){
-    .hero-container { flex-direction: column; align-items: center; padding-top: 40px; }
-    .hero-photo img { width: 160px; height: 160px; }
-    .hero-name { font-size: 36px; text-align: center; }
-    .hero-title { font-size: 20px; text-align: center; }
-    .hero-sub, .hero-meta { text-align: center; }
-    .hero-buttons { justify-content: center; flex-wrap: wrap; gap: 10px; }
+@media (max-width:880px){
+  .hero .card{grid-template-columns: 140px 1fr;}
+  .avatar{width:140px;height:140px;}
 }
-
-  /* Sections (cards) */
-  .card{
-    background:var(--card);
-    border-radius:12px;
-    padding:20px;
-    margin-bottom:18px;
-    box-shadow:0 10px 28px rgba(15,30,40,0.04);
-    border:1px solid rgba(3,18,28,0.03);
-    transition:all .28s ease;
-  }
-  .card h3{margin:0 0 8px 0; color:var(--nav)}
-  .muted{color:var(--muted); margin-bottom:12px}
-
-  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:14px}
-  ul.clean{padding-left:18px; margin:10px 0}
-  li{margin:8px 0; line-height:1.5}
-
-  /* certificate card */
-  .cert-card{
-    display:flex;
-    gap:16px;
-    align-items:center;
-    justify-content:space-between;
-    padding:14px;
-    border-radius:12px;
-    background:linear-gradient(180deg,#fff,#f7fbfd);
-    border:1px solid rgba(2,18,28,0.04);
-  }
-  .cert-left{display:flex; gap:12px; align-items:center; min-width:0}
-  .cert-thumb{width:72px; height:72px; border-radius:8px; background:#e9fbf7; display:flex; align-items:center; justify-content:center; font-weight:700; color:var(--muted)}
-  .cert-info{min-width:0}
-  .cert-info .title{font-weight:700; color:var(--nav)}
-  .cert-info .sub{color:var(--muted); font-size:13px}
-
-  .cert-actions{display:flex; gap:10px; align-items:center}
-  .link-btn{padding:8px 12px; border-radius:8px; text-decoration:none; background:var(--nav); color:white; font-weight:700; border:0}
-  .outline-btn{padding:8px 12px; border-radius:8px; background:transparent; border:1px solid rgba(2,10,18,0.06); font-weight:700; color:var(--nav)}
-
-  /* footer */
-  footer{margin-top:24px; color:var(--muted); font-size:13px; text-align:center}
-
-  /* responsive */
-  @media (max-width:980px){
-    aside.sidebar{display:none}
-    .layout{flex-direction:column}
-    main.content{padding:18px}
-    .two-col{grid-template-columns:1fr}
-    .hero{flex-direction:row; gap:16px}
-    .photo{width:120px;height:120px}
-    .photo-frame{width:120px;height:120px}
-  }
-
-  /* print cleanup */
-  @media print{
-    aside.sidebar{display:none}
-    .photo{border:none; box-shadow:none}
-  }
+@media (max-width:680px){
+  .hero{padding:20px;}
+  .nav .links{display:none;}
+  .hero h1{font-size:28px;}
+  .hero p.lead{font-size:14px;}
+  .two-col{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
 
-<div class="layout">
-  <!-- SIDEBAR -->
-  <aside class="sidebar" role="navigation" aria-label="Main navigation">
-    <div>
-      <div class="brand">KANWAR ABDUL REHMAN</div>
-      <div class="subtitle">Instrumentation &amp; Control Engineer</div>
+<!-- NAV -->
+<nav class="nav">
+  <div style="display:flex;align-items:center;gap:14px">
+    <div class="logo">Kanwar Abdul Rehman</div>
+    <div class="links">
+      <a href="#" class="nav-link active" data-target="home">Home</a>
+      <a href="#" class="nav-link" data-target="profile">Profile</a>
+      <a href="#" class="nav-link" data-target="experience">Experience</a>
+      <a href="#" class="nav-link" data-target="skills">Skills</a>
+      <a href="#" class="nav-link" data-target="education">Education</a>
+      <a href="#" class="nav-link" data-target="certifications">Certifications</a>
+      <a href="#" class="nav-link" data-target="achievements">Achievements</a>
+      <a href="#" class="nav-link" data-target="languages">Languages</a>
     </div>
+  </div>
+</nav>
 
-    <nav class="sidenav" aria-label="Sections">
-      <button class="nav-btn active" data-target="home">Home</button>
-      <button class="nav-btn" data-target="profile">Profile</button>
-      <button class="nav-btn" data-target="experience">Experience</button>
-      <button class="nav-btn" data-target="skills">Skills</button>
-      <button class="nav-btn" data-target="education">Education</button>
-      <button class="nav-btn" data-target="certifications">Certifications</button>
-      <button class="nav-btn" data-target="achievements">Achievements</button>
-      <button class="nav-btn" data-target="languages">Languages</button>
-    </nav>
-
-    <div class="sidebar-footer">
-      <div style="font-weight:700">Faisalabad, Pakistan</div>
-      <div style="font-size:13px; margin-top:6px">+92 337 991 7733 · <a href="mailto:ranakanwarkhan@gmail.com" style="color:#bfece4;text-decoration:none">ranakanwarkhan@gmail.com</a></div>
-    </div>
-  </aside>
+<!-- HERO -->
 <header class="hero" id="homeView">
-  <div class="hero-overlay"></div>
-
-  <div class="hero-container">
-
-    <!-- LEFT: Profile Image -->
-    <div class="hero-photo">
-      <img src="MMM.jpg" alt="Profile Photo of Kanwar Abdul Rehman">
+  <div class="card">
+    <div class="avatar">
+      <img id="avatarImg" src="MMM.jpg" alt="Profile image" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23cfe7ff%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2216%22 fill=%22%23123456%22>Upload photo</text></svg>';">
     </div>
 
-    <!-- RIGHT: Text -->
-    <div class="hero-text">
-      <h1 class="hero-name">Kanwar Abdul Rehman</h1>
-      <h2 class="hero-title">Instrumentation & Control Engineer</h2>
+    <div>
+      <h1>Kanwar Abdul Rehman</h1>
+      <p class="lead">Instrumentation & Control Engineer — Process Control • Automation</p>
+      <div class="meta">Faisalabad, Pakistan · <strong>+92 337 991 7733</strong> · <a href="mailto:ranakanwarkhan@gmail.com" style="color: #e6f7ff">ranakanwarkhan@gmail.com</a></div>
 
-      <p class="hero-sub">
-        Industrial Automation • Power Plants • Process Control • Safety Systems
-      </p>
-
-      <p class="hero-meta">
-        Faisalabad, Pakistan &middot; 
-        <strong>+92 337 991 7733</strong> &middot; 
-        <a href="mailto:ranakanwarkhan@gmail.com" style="color:#a0d8ff;">ranakanwarkhan@gmail.com</a>
-      </p>
-
-      <div class="hero-buttons">
+      <div class="actions">
         <button class="btn primary" onclick="openSection('profile')">View Profile</button>
-        <a class="btn outline" href="https://www.linkedin.com/in/kanwar-abdul-rehman-b5330b253" target="_blank">LinkedIn</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/kanwar-abdul-rehman-b5330b253" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
-
   </div>
 </header>
 
-
-    <!-- PROFILE -->
-    <section id="profile" class="card" role="region" aria-labelledby="profileTitle">
-      <h3 id="profileTitle">Profile Summary</h3>
-      <div class="muted">Instrumentation &amp; Control Engineer — process control, field instrumentation, PLC/DCS, vibration monitoring</div>
-      <div class="two-col">
-        <div>
-          <p><strong>Overview</strong></p>
-          <p>Instrumentation &amp; Control Engineer with practical experience in industrial process control, field instrumentation, PLC/DCS systems and equipment maintenance. Skilled in calibration, loop testing, troubleshooting, and control coordination. Familiar with safety interlocks, shutdown logic, IEC 61508 and SIL practices.</p>
-        </div>
-        <div>
-          <p><strong>Key strengths</strong></p>
-          <ul class="clean">
-            <li>Loop checking & signal mapping</li>
-            <li>Control valve and actuator validation</li>
-            <li>Vibration monitoring (Bently Nevada 3500)</li>
-            <li>PLC/DCS & SCADA/HMI</li>
-          </ul>
-        </div>
+<!-- MAIN -->
+<main>
+  <!-- Profile -->
+  <section id="profile" class="section">
+    <h2>Profile Summary</h2>
+    <div class="muted">Instrumentation & Control Engineer — Process control, calibration, PLC/DCS, vibration monitoring</div>
+    <div class="two-col">
+      <div>
+        <p><strong>Overview</strong></p>
+        <p>Instrumentation & Control Engineer with practical experience in industrial process control, field instrumentation, PLC/DCS systems, and equipment maintenance. Skilled in calibration, loop testing, troubleshooting, and control coordination. Familiar with safety interlocks, shutdown logic, IEC 61508, and SIL practices.</p>
       </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience" class="card" role="region" aria-labelledby="expTitle">
-      <h3 id="expTitle">Professional Experience</h3>
-      <div class="muted">Selected roles</div>
-
-      <h4 style="margin:8px 0 6px 0">Trainee I &amp; C Engineer — Coal-Fired Power Plant (Sitara Chemical)</h4>
-      <div style="font-size:13px; color:var(--muted); margin-bottom:8px">Sep 2025 — Present</div>
-      <ul class="clean">
-        <li>Commissioning and tuning of control loops; DCS integration of field transmitters.</li>
-        <li>Loop checking, signal mapping, logic verification; control valve & actuator validation.</li>
-        <li>Interlock testing, startup/shutdown sequences, calibration & ISO documentation.</li>
-      </ul>
-
-      <h4 style="margin:10px 0 6px 0">Trainee I &amp; C Engineer — Chlor-Alkali Plant</h4>
-      <div style="font-size:13px; color:var(--muted); margin-bottom:8px">Feb 2025 — Aug 2025</div>
-      <ul class="clean">
-        <li>PLC/DCS configuration support and PID tuning; commissioning rectifier/polarizer equipment.</li>
-      </ul>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills" class="card" role="region" aria-labelledby="skillsTitle">
-      <h3 id="skillsTitle">Core Technical Skills</h3>
-      <div class="two-col">
-        <div>
-          <p><strong>Instrumentation</strong></p>
-          <ul class="clean">
-            <li>Control valves, MOVs, SOVs, positioners</li>
-            <li>Transmitters: Flow, Level, Pressure, RTDs, Thermocouples</li>
-          </ul>
-        </div>
-        <div>
-          <p><strong>Automation & Vibration</strong></p>
-          <ul class="clean">
-            <li>PLC (Siemens S7, Mitsubishi), DCS (SUPCON, HollySys), SCADA/HMI</li>
-            <li>Bently Nevada 3500, Keyphasor, proximity probes, vibration analysis</li>
-          </ul>
-        </div>
+      <div>
+        <p><strong>Contact</strong></p>
+        <p>Faisalabad, Pakistan<br>+92 337 991 7733<br><a href="mailto:ranakanwarkhan@gmail.com">ranakanwarkhan@gmail.com</a></p>
       </div>
-    </section>
+    </div>
+    <a class="back-home" href="#" onclick="showHome();return false;">Back to Home</a>
+  </section>
 
-    <!-- EDUCATION -->
-    <section id="education" class="card" role="region" aria-labelledby="eduTitle">
-      <h3 id="eduTitle">Education</h3>
-      <div class="muted">Pakistan Institute of Engineering and Applied Sciences (PIEAS)</div>
-      <p><strong>B.Sc. Electrical Engineering</strong> — 2024</p>
-      <p>Relevant: Embedded Systems, Microprocessors, FPGA Design, Computational Intelligence</p>
-    </section>
+  <!-- Experience -->
+  <section id="experience" class="section">
+    <h2>Professional Experience</h2>
+    <div class="muted">Recent roles & responsibilities</div>
 
-    <!-- CERTIFICATIONS -->
-    <section id="certifications" class="card" role="region" aria-labelledby="certTitle">
-      <h3 id="certTitle">Certifications</h3>
-      <div class="muted">Official LinkedIn listing + verified Coursera credential</div>
+    <h3>Trainee I & C Engineer — Coal-Fired Power Plant (Sitara Chemical)</h3>
+    <div class="muted">Sep 2025 — Present</div>
+    <ul class="clean">
+      <li>Commissioning and tuning of control loops, integrating field transmitters with DCS.</li>
+      <li>Loop checking, signal mapping, logic verification; control valve & actuator validation.</li>
+      <li>Interlock testing, shutdown/startup sequencing, ISO documentation.</li>
+    </ul>
 
-      <div class="cert-card" style="margin-top:8px;">
-        <div class="cert-left">
-          <div class="cert-thumb">PDF</div>
-          <div class="cert-info">
-            <div class="title">Major Engineering Project Performance</div>
-            <div class="sub">Coursera — Credential ID: <strong>YJF888UK66AJ</strong></div>
-          </div>
-        </div>
+    <h3>Trainee I & C Engineer — Chlor-Alkali Plant</h3>
+    <div class="muted">Feb 2025 — Aug 2025</div>
+    <ul class="clean">
+      <li>PLC/DCS support and basic PID tuning; commissioning of rectifier/polarizer equipment.</li>
+    </ul>
 
-        <div class="cert-actions">
-          <!-- Local PDF link: must match file name in same folder -->
-          <a class="link-btn" href="Coursera major engineering project performance.pdf" target="_blank" rel="noopener">Open Certificate (PDF)</a>
-          <a class="outline-btn" href="https://www.linkedin.com/in/kanwar-abdul-rehman-b5330b253/details/certifications/" target="_blank" rel="noopener">View on LinkedIn</a>
-        </div>
+    <a class="back-home" href="#" onclick="showHome();return false;">Back to Home</a>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="section">
+    <h2>Core Technical Skills</h2>
+    <div class="two-col">
+      <div>
+        <p><strong>Instrumentation</strong></p>
+        <ul class="clean">
+          <li>Control Valves, MOVs, SOVs, positioners</li>
+          <li>Transmitters: Flow, Level, Pressure, RTDs, Thermocouples</li>
+        </ul>
       </div>
-      <div class="cert-card" style="margin-top:8px;">
-        <div class="cert-left">
-          <div class="cert-thumb">PDF</div>
-          <div class="cert-info">
-            <div class="title">Google Project Management</div>
-            <div class="sub">Coursera — Credential ID: <strong>YJF888UK66AJ</strong></div>
-          </div>
-        </div>
-
-        <div class="cert-actions">
-          <!-- Local PDF link: must match file name in same folder -->
-          <a class="link-btn" href="Coursera project management.pdf" target="_blank" rel="noopener">Open Certificate (PDF)</a>
-          <a class="outline-btn" href="https://www.linkedin.com/in/kanwar-abdul-rehman-b5330b253/details/certifications/" target="_blank" rel="noopener">View on LinkedIn</a>
-        </div>
+      <div>
+        <p><strong>Automation & Vibration</strong></p>
+        <ul class="clean">
+          <li>PLC (Siemens S7, Mitsubishi), DCS (SUPCON, HollySys), SCADA/HMI</li>
+          <li>Bently Nevada 3500, Keyphasor, proximity probes, vibration analysis</li>
+        </ul>
       </div>
-      <p style="margin-top:12px; color:var(--muted); font-size:13px">
-        Tip: place the PDF in the same folder as this HTML and name it exactly:
-        <code style="background:#f1f6f5;padding:2px 6px;border-radius:6px;display:inline-block">Coursera major engineering project performance.pdf</code>
-      </p>
-    </section>
+    </div>
+    <a class="back-home" href="#" onclick="showHome();return false;">Back to Home</a>
+  </section>
 
-    <!-- ACHIEVEMENTS -->
-    <section id="achievements" class="card" role="region" aria-labelledby="achTitle">
-      <h3 id="achTitle">Achievements</h3>
-      <ul class="clean">
-        <li>Supported turbine startup &amp; shutdown vibration checks</li>
-        <li>Commissioned Bently Nevada 3500 vibration monitoring rack</li>
-        <li>Assisted commissioning of 17kA Rectifier and 100A Polarizer</li>
-      </ul>
-    </section>
+  <!-- Education -->
+  <section id="education" class="section">
+    <h2>Education</h2>
+    <div class="muted">Pakistan Institute of Engineering and Applied Sciences (PIEAS)</div>
+    <p><strong>B.Sc. Electrical Engineering</strong> — 2024</p>
+    <p>Relevant: Embedded Systems, Microprocessors, FPGA Design, Computational Intelligence</p>
+    <a class="back-home" href="#" onclick="showHome();return false;">Back to Home</a>
+  </section>
 
-    <!-- LANGUAGES -->
-    <section id="languages" class="card" role="region" aria-labelledby="langTitle">
-      <h3 id="langTitle">Languages &amp; Soft Skills</h3>
-      <ul class="clean">
-        <li><strong>Languages:</strong> English (Professional), Urdu (Native), Punjabi (Native)</li>
-        <li><strong>Soft skills:</strong> Teamwork, Problem solving, Documentation, Communication, Time management</li>
-      </ul>
-    </section>
+  <!-- Certifications -->
+  <section id="certifications" class="section">
+    <h2>Certifications</h2>
+    <div class="muted">Official certifications (LinkedIn) and verified uploaded certificates</div>
 
-    <footer>
-      © <span id="year"></span> Kanwar Abdul Rehman — Instrumentation &amp; Control Engineer
-    </footer>
-  </main>
-</div>
+    <p style="margin-top:8px">
+      <a class="btn ghost" href="https://www.linkedin.com/in/kanwar-abdul-rehman-b5330b253/details/certifications/" target="_blank" rel="noopener">View All Certifications on LinkedIn</a>
+    </p>
 
-<script>
-  // Year
-  document.getElementById('year').textContent = new Date().getFullYear();
+    <div style="background:#fff;border:1px solid rgba(20,40,60,0.12);border-radius:12px;padding:20px;margin-top:18px;box-shadow:0 6px 20px rgba(0,0,0,0.06);">
+      <h3 style="margin:0; font-size:18px; color:#0b2738;">Major Engineering Project Performance</h3>
+      <div style="color:#7b8a99; font-size:14px; margin:6px 0 10px;">Coursera — Credential ID: <strong>YJF888UK66AJ</strong></div>
+      <a href="Coursera_major_engineering_project_performance.pdf" target="_blank" style="display:inline-block;padding:10px 14px;background:var(--primary);color:white;text-decoration:none;border-radius:8px;font-weight:600;font-size:14px;">View Certificate (PDF)</a>
 
-  const navBtns = document.querySelectorAll('.nav-btn');
+      <h3 style="margin:20px 0 0; font-size:18px; color:#0b2738;">Google Project Management Specialization</h3>
+      <div style="color:#7b8a99; font-size:14px; margin:6px 0 10px;">Coursera — Credential ID: <strong>YJF888UK66AJ</strong></div>
+      <a href="Coursera_project_management.pdf" target="_blank" style="display:inline-block;padding:10px 14px;background:var(--primary);color:white;text-decoration:none;border-radius:8px;font-weight:600;font-size:14px;">View Certificate (PDF)</a>
+    </div>
 
-  function clearActive(){
-    navBtns.forEach(b => b.classList.remove('active'));
-  }
+    <div class="cert-list" id="certList" style="margin-top:20px;"></div>
 
-  function navigateTo(id){
-    // Hide all sections including hero
-    const allSections = document.querySelectorAll('main > section, .hero');
-    allSections.forEach(s => s.style.display = 'none');
+    <div style="margin-top:12px" class="uploader">
+      <label class="upload-label" for="certInput2" style="padding:8px 12px;background:#eef7ff;color:var(--accent);border-radius:8px;font-weight:600;cursor:pointer;">Upload More Certificates</label>
+      <input id="certInput2" type="file" accept=".pdf,image/*" multiple style="display:none;">
+    </div>
 
-    // Show the target section
-    if(id === 'home'){
-      document.querySelector('.hero').style.display = 'flex';
-    } else {
-      const targetSection = document.getElementById(id);
-      if(targetSection) targetSection.style.display = 'block';
-    }
+    <a class="back-home" href="#" onclick="showHome();return false;">Back to Home</a>
+  </section>
 
-    // Update active button
-    clearActive();
-    const btn = document.querySelector('.nav-btn[data-target="'+id+'"]');
-    if(btn) btn.classList.add('active');
+  <!-- Achievements -->
+  <section id="achievements" class="section">
+    <h2>Achievements</h2>
+    <ul class="clean">
+      <li>Supported turbine startup & shutdown vibration diagnostic checks</li>
+      <li>Helped commission Bently Nevada 3500 vibration monitoring rack</li>
+      <li>Assisted commissioning of 17kA Rectifier and 100A Polarizer</li>
+    </ul>
+    <a class="back-home" href="#" onclick="showHome();return false;">Back to Home</a>
+  </section>
 
-    // Scroll to top smoothly
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  // Initialize buttons
-  navBtns.forEach(btn => {
-    btn.addEventListener('click', () => navigateTo(btn.dataset.target));
-
-    // Keyboard support
-    btn.addEventListener('keydown', e => {
-      if(e.key === 'Enter' || e.key === ' '){
-        e.preventDefault();
-        btn.click();
-      }
-    });
-  });
-
-  // Keyboard arrows navigation
-  document.addEventListener('keydown', e => {
-    if(e.key === 'ArrowDown' || e.key === 'ArrowUp'){
-      const sections = ['home','profile','experience','skills','education','certifications','achievements','languages'];
-      let current = sections.findIndex(id => document.querySelector('.nav-btn[data-target="'+id+'"]')?.classList.contains('active'));
-      if(e.key === 'ArrowDown') current = Math.min(current + 1, sections.length - 1);
-      if(e.key === 'ArrowUp') current = Math.max(current - 1, 0);
-      navigateTo(sections[current]);
-    }
-  });
-
-  // Show initial hero
-  navigateTo('home');
-</script>
-
- 
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
+  <!-- Languages -->
+  <section id="languages" class="section">
+    <h2>Languages & Soft Skills</h2>
+    <ul class="clean">
+      <li><strong>Languages:</strong> English (Professional), Urdu (Native), Punjabi (Native)</li>
+      <li><strong>Soft skills:</strong> Teamwork, Problem solving, Documentation, Communication, Time management</li>
+    </ul>
+    <a class="back
