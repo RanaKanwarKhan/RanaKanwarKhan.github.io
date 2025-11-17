@@ -503,18 +503,13 @@ function showSection(id) {
   if (activeLink) activeLink.classList.add('active');
 }
 
-
-    }
-  }
-
-  // Update nav link active state
-  navLinks.forEach(link => link.classList.remove('active'));
-  const activeLink = document.querySelector(`.nav-link[data-target="${id}"]`);
-  if (activeLink) activeLink.classList.add('active');
-
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
+// Add click event to nav links
+navLinks.forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const target = link.getAttribute('data-target');
+    showSection(target);
+  });
 });
 
 // Function for "View Profile" button
@@ -531,6 +526,7 @@ showHome();
 
 </body>
 </html>
+
 
 
 
