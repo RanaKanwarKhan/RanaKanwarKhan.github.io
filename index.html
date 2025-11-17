@@ -77,19 +77,6 @@
     scroll-snap-align: start; /* optional: smooth snap when scrolling */
 }
 
-main > section.active {
-    display: block;          /* only active section is visible */
-}// Keyboard navigation: Arrow Up/Down
-document.addEventListener('keydown', e => {
-    if(e.key === 'ArrowDown' || e.key === 'ArrowUp'){
-        const sections = ['home','profile','experience','skills','education','certifications','achievements','languages'];
-        let current = sections.findIndex(id => document.querySelector('.nav-btn[data-target="'+id+'"]').classList.contains('active'));
-        if(e.key === 'ArrowDown') current = Math.min(current + 1, sections.length - 1);
-        if(e.key === 'ArrowUp') current = Math.max(current - 1, 0);
-        navigateTo(sections[current]);
-    }
-});
-
 
 
 /* ========== Improved Professional Hero ========== */
@@ -538,6 +525,7 @@ document.addEventListener('keydown', e => {
  
 </body>
 </html>
+
 
 
 
