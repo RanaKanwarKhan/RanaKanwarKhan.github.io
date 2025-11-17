@@ -242,8 +242,7 @@ main{
   display:none;
   background:var(--card);
   border-radius:14px;
-    padding-top: 80px;      /* space for navbar */
-    margin-top: -64px;      /* navbar height */
+    
   box-shadow:0 12px 30px rgba(0,0,0,0.06);
   border:1px solid rgba(0,0,0,0.04);
   transition:all .36s ease;
@@ -252,8 +251,16 @@ main{
   scroll-margin-top: 80px; /* leave space for navbar when scrolling */
 }
 
-.section.active{display:block}
-.section h2{margin-top:0; color:var(--nav); font-size:24px; margin-bottom:12px;}
+.section.active{display:block}.section h2 {
+    margin-top: 0;
+    color: var(--nav);
+    font-size: 24px;
+    margin-bottom: 12px;
+
+    /* Fix overlapping by navbar */
+    scroll-margin-top: 80px; /* matches navbar + some padding */
+}
+
 .muted{color:var(--muted); font-size:14px; margin-bottom:12px}
 .two-col{display:grid; grid-template-columns: 1fr 1fr; gap:20px;}
 ul.clean{padding-left:18px; margin:12px 0}
@@ -517,6 +524,7 @@ showHome();
 
 </body>
 </html>
+
 
 
 
