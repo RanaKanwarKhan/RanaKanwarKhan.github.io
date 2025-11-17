@@ -242,14 +242,14 @@ main{
   display:none;
   background:var(--card);
   border-radius:14px;
-    
+  /* padding-top: 80px; */
+  /* margin-top: -64px; */
   box-shadow:0 12px 30px rgba(0,0,0,0.06);
   border:1px solid rgba(0,0,0,0.04);
   transition:all .36s ease;
-
-  /* Fix for fixed navbar overlapping heading */
-  scroll-margin-top: 80px; /* leave space for navbar when scrolling */
+  scroll-margin-top: 80px; /* navbar space */
 }
+
 
 .section.active{display:block}.section h2 {
     margin-top: 0;
@@ -482,14 +482,18 @@ function showSection(id) {
   });
 
   // Show hero only if id is 'home'
-  if (id === 'home') {
-    hero.style.display = 'flex';
-  } else {
-    hero.style.display = 'none';
+if (id === 'home') {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+} else {
     const target = document.getElementById(id);
     if (target) {
-      target.classList.add('active');
-      target.style.display = 'block'; // show this section
+        // Scroll to the section accounting for navbar height (64px)
+        const navbarHeight = document.querySelector('.nav').offsetHeight;
+        const sectionTop = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 10; // 10px extra spacing
+        window.scrollTo({ top: sectionTop, behavior: 'smooth' });
+    }
+}
+
     }
   }
 
@@ -524,6 +528,7 @@ showHome();
 
 </body>
 </html>
+
 
 
 
