@@ -478,21 +478,31 @@ function showSection(id) {
   // Hide all sections
   sections.forEach(s => {
     s.classList.remove('active');
-    s.style.display = 'none';  // hide all
+    s.style.display = 'none';
   });
 
-  // Show hero only if id is 'home'
-if (id === 'home') {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-} else {
+  // Show the target section
+  if (id === 'home') {
+    hero.scrollIntoView({ behavior: 'smooth' });
+  } else {
     const target = document.getElementById(id);
     if (target) {
-        // Scroll to the section accounting for navbar height (64px)
-        const navbarHeight = document.querySelector('.nav').offsetHeight;
-        const sectionTop = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 10; // 10px extra spacing
-        window.scrollTo({ top: sectionTop, behavior: 'smooth' });
+      target.classList.add('active');
+      target.style.display = 'block';
+
+      // Scroll accounting for fixed navbar
+      const navbarHeight = document.querySelector('.nav').offsetHeight;
+      const sectionTop = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 10; // 10px padding
+      window.scrollTo({ top: sectionTop, behavior: 'smooth' });
     }
+  }
+
+  // Update nav link active state
+  navLinks.forEach(link => link.classList.remove('active'));
+  const activeLink = document.querySelector(`.nav-link[data-target="${id}"]`);
+  if (activeLink) activeLink.classList.add('active');
 }
+
 
     }
   }
@@ -528,6 +538,7 @@ showHome();
 
 </body>
 </html>
+
 
 
 
