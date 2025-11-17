@@ -479,43 +479,23 @@ document.addEventListener('keydown', e => {
   // Year
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Navigation
   const navBtns = document.querySelectorAll('.nav-btn');
-  function clearActive(){ navBtns.forEach(b=>b.classList.remove('active')) }
-  function navigateTo(id){
-    // Show only selected section (home is hero card)
-    document.querySelectorAll('main > section').forEach(s=>{
-      s.style.display = (s.id === id) ? 'block' : 'none';
-    });
-    clearActive();
-    const btn = document.querySelector('.nav-btn[data-target="'+id+'"]');
-    if(btn) btn.classList.add('active');
-    // Scroll content into view
-    setTimeout(()=> {
-      const el = document.getElementById(id);
-      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
-    }, 80);
+
+  function clearActive(){
+    navBtns.forEach(b => b.classList.remove('active'));
   }
 
-  navBtns.forEach(btn=>{
-    btn.addEventListener('click', ()=> {
-      const target = btn.dataset.target;
-      navigateTo(target);
-    });
-  });
-
-  // Initial state: show home (hero)
-function navigateTo(id){
+  function navigateTo(id){
     // Hide all sections including hero
     const allSections = document.querySelectorAll('main > section, .hero');
     allSections.forEach(s => s.style.display = 'none');
 
     // Show the target section
-    if(id === 'home') {
-        document.querySelector('.hero').style.display = 'flex';
+    if(id === 'home'){
+      document.querySelector('.hero').style.display = 'flex';
     } else {
-        const targetSection = document.getElementById(id);
-        if(targetSection) targetSection.style.display = 'block';
+      const targetSection = document.getElementById(id);
+      if(targetSection) targetSection.style.display = 'block';
     }
 
     // Update active button
@@ -525,20 +505,40 @@ function navigateTo(id){
 
     // Scroll to top smoothly
     window.scrollTo({ top: 0, behavior: 'smooth' });
-}
+  }
 
-  // Accessibility: keyboard support
-  navBtns.forEach((b, i) => {
-    b.addEventListener('keydown', e => {
-      if(e.key === 'Enter' || e.key === ' ') {
+  // Initialize buttons
+  navBtns.forEach(btn => {
+    btn.addEventListener('click', () => navigateTo(btn.dataset.target));
+
+    // Keyboard support
+    btn.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' '){
         e.preventDefault();
-        b.click();
+        btn.click();
       }
     });
   });
+
+  // Keyboard arrows navigation
+  document.addEventListener('keydown', e => {
+    if(e.key === 'ArrowDown' || e.key === 'ArrowUp'){
+      const sections = ['home','profile','experience','skills','education','certifications','achievements','languages'];
+      let current = sections.findIndex(id => document.querySelector('.nav-btn[data-target="'+id+'"]')?.classList.contains('active'));
+      if(e.key === 'ArrowDown') current = Math.min(current + 1, sections.length - 1);
+      if(e.key === 'ArrowUp') current = Math.max(current - 1, 0);
+      navigateTo(sections[current]);
+    }
+  });
+
+  // Show initial hero
+  navigateTo('home');
 </script>
+
+ 
 </body>
 </html>
+
 
 
 
