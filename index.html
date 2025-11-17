@@ -69,6 +69,28 @@
     max-width:1100px;
     margin:0 auto;
   }
+  main > section {
+    display: none;           /* hide all sections by default */
+    min-height: calc(100vh - 64px); /* full viewport minus top spacing */
+    padding: 40px;
+    box-sizing: border-box;
+    scroll-snap-align: start; /* optional: smooth snap when scrolling */
+}
+
+main > section.active {
+    display: block;          /* only active section is visible */
+}// Keyboard navigation: Arrow Up/Down
+document.addEventListener('keydown', e => {
+    if(e.key === 'ArrowDown' || e.key === 'ArrowUp'){
+        const sections = ['home','profile','experience','skills','education','certifications','achievements','languages'];
+        let current = sections.findIndex(id => document.querySelector('.nav-btn[data-target="'+id+'"]').classList.contains('active'));
+        if(e.key === 'ArrowDown') current = Math.min(current + 1, sections.length - 1);
+        if(e.key === 'ArrowUp') current = Math.max(current - 1, 0);
+        navigateTo(sections[current]);
+    }
+});
+
+
 
 /* ========== Improved Professional Hero ========== */
 
@@ -483,7 +505,27 @@
   });
 
   // Initial state: show home (hero)
-  navigateTo('home');
+function navigateTo(id){
+    // Hide all sections including hero
+    const allSections = document.querySelectorAll('main > section, .hero');
+    allSections.forEach(s => s.style.display = 'none');
+
+    // Show the target section
+    if(id === 'home') {
+        document.querySelector('.hero').style.display = 'flex';
+    } else {
+        const targetSection = document.getElementById(id);
+        if(targetSection) targetSection.style.display = 'block';
+    }
+
+    // Update active button
+    clearActive();
+    const btn = document.querySelector('.nav-btn[data-target="'+id+'"]');
+    if(btn) btn.classList.add('active');
+
+    // Scroll to top smoothly
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
   // Accessibility: keyboard support
   navBtns.forEach((b, i) => {
@@ -497,6 +539,7 @@
 </script>
 </body>
 </html>
+
 
 
 
