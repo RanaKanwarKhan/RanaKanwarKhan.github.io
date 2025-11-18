@@ -542,6 +542,11 @@ function openSection(id) { showSection(id); }
 
 // Function for "Back to Home" buttons
 function showHome() { showSection('home'); }
+function openSection(id) {
+    showSection(id);
+    document.querySelectorAll(".nav-link").forEach(a => a.classList.remove("active"));
+    document.querySelector(`.nav-link[data-target="${id}"]`)?.classList.add("active");
+}
 
 // Initially show Hero
 showHome();
@@ -551,6 +556,7 @@ showHome();
 
 </body>
 </html>
+
 
 
 
