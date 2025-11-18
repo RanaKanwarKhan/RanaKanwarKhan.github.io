@@ -8,7 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-/* ---------------- VARIABLES ---------------- */
 :root{
   --primary:#1E90FF;
   --nav:#0B3C5D;
@@ -27,7 +26,7 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 
-/* ---------------- NAV ---------------- */
+/* NAV */
 .nav{
   position:fixed;
   top:0; left:0; right:0;
@@ -68,7 +67,7 @@ body{
   transform:translateY(-2px);
 }
 
-/* ---------------- HERO ---------------- */
+/* HERO */
 .hero {
     position: relative;
     height: calc(100vh - 64px);
@@ -113,9 +112,7 @@ body{
     transition: transform 0.3s ease;
 }
 .hero-photo img:hover { transform: scale(1.03); }
-.hero-text {
-    max-width: 700px;
-}
+.hero-text { max-width: 700px; }
 .hero-name { font-size: 52px; margin: 0; font-weight: 800; letter-spacing: -0.8px; }
 .hero-title { margin: 10px 0 20px; font-size: 24px; color: #AED7FF; font-weight: 500; }
 .hero-sub { font-size: 17px; opacity: 0.95; margin-bottom: 14px; color: #e7f5ff; }
@@ -128,7 +125,7 @@ body{
 .btn.ghost { border: 2px solid #7DDA58; color: #7DDA58; padding: 12px 22px; border-radius: 12px; font-weight: 700; font-size: 15px; }
 .btn.ghost:hover { background: #7DDA58; color: #0b1b2d; transform: translateY(-3px); }
 
-/* ---------------- SECTIONS ---------------- */
+/* SECTIONS */
 main{ padding:48px 16px 80px; max-width:1100px; margin:0 auto; }
 .section{
     display:none;
@@ -143,7 +140,7 @@ main{ padding:48px 16px 80px; max-width:1100px; margin:0 auto; }
 .section.active{ display: block; }
 .section h2 { margin-top:0; color: var(--nav); font-size:24px; margin-bottom:12px; }
 
-/* ---------------- PRINT ---------------- */
+/* PRINT */
 @media print {
     .hero, .section {
         display: block !important;
@@ -157,7 +154,6 @@ main{ padding:48px 16px 80px; max-width:1100px; margin:0 auto; }
 /* Responsive */
 @media (max-width:880px){ .hero-photo img{width:140px;height:140px;} }
 @media (max-width:680px){ .hero{padding:20px;} .nav .links{display:none;} }
-
 </style>
 </head>
 <body>
@@ -197,6 +193,7 @@ main{ padding:48px 16px 80px; max-width:1100px; margin:0 auto; }
     </div>
   </div>
 </header>
+<main>
 
 <section id="profile" class="section" style="display:block;">
     <h2>Profile Summary</h2>
@@ -327,55 +324,40 @@ main{ padding:48px 16px 80px; max-width:1100px; margin:0 auto; }
 
 
 </main>
-
 <script>
-// Get nav links, sections, and hero
 const navLinks = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('.section');
 const hero = document.querySelector('.hero');
 
 function showSection(id) {
-    // Hide all sections
     sections.forEach(s => {
         s.classList.remove('active');
         s.style.display = 'none';
     });
 
-    // Show hero
     if (id === 'home') {
         hero.style.display = 'flex';
-        hero.scrollIntoView({ behavior: 'smooth' });
     } else {
         hero.style.display = 'none';
         const target = document.getElementById(id);
-       if (target) {
-    target.style.display = 'block';   // Show the section
-    target.classList.add('active');    // Add the 'active' class
-    target.scrollIntoView({ behavior: 'smooth' }); // Scroll to it
-}
-
+        if (target) {
+            target.style.display = 'block';
+            target.classList.add('active');
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
     }
 
-    // Update nav links
     navLinks.forEach(link => link.classList.remove('active'));
     const activeLink = document.querySelector(`.nav-link[data-target="${id}"]`);
     if (activeLink) activeLink.classList.add('active');
 }
 
-
-// Buttons
-function openSection(id) { showSection(id); }
 function showHome() { showSection('home'); }
-
-// Initially show hero
 showHome();
-
 </script>
-
 
 </body>
 </html>
-
 
 
 
