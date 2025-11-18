@@ -6,6 +6,74 @@
 <title>Kanwar Abdul Rehman — Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
+    /* === SEXY SECTION STYLING === */
+.section {
+    position: relative;
+    padding: 60px 40px;
+    margin: 60px auto;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: #fff;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    overflow: hidden;
+}
+
+/* === Neon Glow Hover === */
+.section:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.7),
+                0 0 50px rgba(0, 150, 255, 0.5);
+    border-color: rgba(0, 255, 255, 0.8);
+}
+
+/* === Animated Outer Border === */
+.section::before, .section::after {
+    content: '';
+    position: absolute;
+    top: -2px; left: -2px; right: -2px; bottom: -2px;
+    border-radius: 20px;
+    z-index: -1;
+    animation: rotateBorder 6s linear infinite;
+    background: linear-gradient(
+        45deg,
+        #00eaff,
+        #0066ff,
+        #ff00ff,
+        #ff0099,
+        #00ffaa
+    );
+    background-size: 400% 400%;
+    opacity: 0.7;
+}
+
+/* slow rotating color animation */
+@keyframes rotateBorder {
+    0%   { filter: hue-rotate(0deg); }
+    50%  { filter: hue-rotate(180deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+/* Prevent the animated border from covering inside */
+.section::after {
+    filter: blur(20px);
+    opacity: 0.4;
+}
+
+/* === Sexy Section Titles === */
+.section h2 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #00eaff;
+    text-shadow: 0 0 10px #00eaff;
+}
+
     /* SEXY CONTACT SECTION */
 .contact-section h2 {
     font-size: 28px;
@@ -417,6 +485,7 @@ showHome();
 </script>
 </body>
 </html>
+
 
 
 
