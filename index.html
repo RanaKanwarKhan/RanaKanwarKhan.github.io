@@ -8,39 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-/* ---------------- PRINT ---------------- */
-.section {
-    display: none;           /* Hidden by default */
-    min-height: calc(100vh - 64px); /* Full viewport height minus navbar */
-    padding: 40px 30px;
-    background: var(--card);
-    border-radius: 14px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.06);
-    border: 1px solid rgba(0,0,0,0.04);
-    scroll-margin-top: 64px; /* navbar height */
-}
-
-/* Print: force each section on separate page */
-@media print {
-    .section {
-        display: block !important;
-        page-break-before: always;
-        break-before: page;
-    }
-    .hero {
-        page-break-after: always;
-        break-after: page;
-    }
-}
-
-
-/* Hero Title Page Ends With Page Break */
-.hero {
-    page-break-after: always;
-    break-after: page;
-}
-}
-
 /* ---------------- VARIABLES ---------------- */
 :root{
   --primary:#1E90FF;
@@ -50,7 +17,6 @@
   --card:#F7F9FA;
   --bg:#f0f4f8;
   --text:#14202b;
-  --glass: rgba(255,255,255,0.7);
 }
 *{box-sizing:border-box;}
 body{
@@ -102,10 +68,7 @@ body{
   transform:translateY(-2px);
 }
 
-/* ======== PROFESSIONAL HERO WITH TURBINE BACKGROUND ======== */
-
-/* ======== ULTRA PROFESSIONAL HERO — TURBINE BACKGROUND ======== */
-
+/* ---------------- HERO ---------------- */
 .hero {
     position: relative;
     height: calc(100vh - 64px);
@@ -114,7 +77,6 @@ body{
     align-items: center;
     justify-content: center;
     padding: 50px;
-
     background:
         linear-gradient(
             135deg,
@@ -123,18 +85,15 @@ body{
             rgba(5, 25, 60, 0.75) 100%
         ),
         url("turbine.jpg") center/cover no-repeat;
-
     color: white;
     letter-spacing: 0.3px;
 }
-
 .hero-overlay {
     position: absolute;
     inset: 0;
     background: radial-gradient(circle at 35% 40%, rgba(255,255,255,0.18), transparent 70%);
     pointer-events: none;
 }
-
 .hero-container {
     position: relative;
     max-width: 1250px;
@@ -144,8 +103,6 @@ body{
     align-items: center;
     padding: 20px 30px;
 }
-
-/* PHOTO */
 .hero-photo img {
     width: 270px;
     height: 270px;
@@ -155,156 +112,52 @@ body{
     box-shadow: 0 22px 45px rgba(0,0,0,0.55);
     transition: transform 0.3s ease;
 }
-.hero-photo img:hover {
-    transform: scale(1.03);
-}
-
-/* TEXT */
+.hero-photo img:hover { transform: scale(1.03); }
 .hero-text {
     max-width: 700px;
 }
+.hero-name { font-size: 52px; margin: 0; font-weight: 800; letter-spacing: -0.8px; }
+.hero-title { margin: 10px 0 20px; font-size: 24px; color: #AED7FF; font-weight: 500; }
+.hero-sub { font-size: 17px; opacity: 0.95; margin-bottom: 14px; color: #e7f5ff; }
+.hero-meta { margin-bottom: 25px; color: #d9ebff; font-size: 15px; }
+.hero-meta a { color: #85c8ff; text-decoration: none; font-weight: 600; }
+.hero-meta a:hover { text-decoration: underline; }
+.hero-buttons { display: flex; gap: 14px; }
+.btn.primary { background: #7DDA58; color: #0b1b2d; padding: 12px 22px; border-radius: 12px; font-weight: 700; font-size: 15px; box-shadow: 0 10px 25px rgba(10,180,60,0.4); }
+.btn.primary:hover { transform: translateY(-3px); }
+.btn.ghost { border: 2px solid #7DDA58; color: #7DDA58; padding: 12px 22px; border-radius: 12px; font-weight: 700; font-size: 15px; }
+.btn.ghost:hover { background: #7DDA58; color: #0b1b2d; transform: translateY(-3px); }
 
-.hero-name {
-    font-size: 52px;
-    margin: 0;
-    font-weight: 800;
-    letter-spacing: -0.8px;
-    color: #ffffff;
+/* ---------------- SECTIONS ---------------- */
+main{ padding:48px 16px 80px; max-width:1100px; margin:0 auto; }
+.section{
+    display:none;
+    min-height: calc(100vh - 64px);
+    padding: 40px 30px;
+    background: var(--card);
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+    scroll-margin-top: 64px;
 }
+.section.active{ display: block; }
+.section h2 { margin-top:0; color: var(--nav); font-size:24px; margin-bottom:12px; }
 
-.hero-title {
-    margin: 10px 0 20px;
-    font-size: 24px;
-    color: #AED7FF;
-    font-weight: 500;
+/* ---------------- PRINT ---------------- */
+@media print {
+    .hero, .section {
+        display: block !important;
+        page-break-before: always;
+        break-before: page;
+        page-break-after: always;
+        break-after: page;
+    }
 }
-
-.hero-sub {
-    font-size: 17px;
-    opacity: 0.95;
-    margin-bottom: 14px;
-    color: #e7f5ff;
-}
-
-.hero-meta {
-    margin-bottom: 25px;
-    color: #d9ebff;
-    font-size: 15px;
-}
-
-.hero-meta a {
-    color: #85c8ff;
-    text-decoration: none;
-    font-weight: 600;
-}
-.hero-meta a:hover {
-    text-decoration: underline;
-}
-
-/* BUTTONS */
-.hero-buttons {
-    display: flex;
-    gap: 14px;
-}
-
-.btn.primary {
-    background: #7DDA58;
-    color: #0b1b2d;
-    padding: 12px 22px;
-    border-radius: 12px;
-    font-weight: 700;
-    font-size: 15px;
-    box-shadow: 0 10px 25px rgba(10, 180, 60, 0.4);
-}
-.btn.primary:hover {
-    transform: translateY(-3px);
-}
-
-.btn.ghost {
-    border: 2px solid #7DDA58;
-    color: #7DDA58;
-    padding: 12px 22px;
-    border-radius: 12px;
-    font-weight: 700;
-    font-size: 15px;
-}
-.btn.ghost:hover {
-    background: #7DDA58;
-    color: #0b1b2d;
-    transform: translateY(-3px);
-}
-
-
-.avatar{
-  width:200px; height:200px; border-radius:12px; overflow:hidden;
-  background:linear-gradient(135deg,#e6eef9,#cde6ff);
-  display:flex; align-items:center; justify-content:center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  border:4px solid rgba(255,255,255,0.08);
-}
-.avatar img{width:100%; height:100%; object-fit:cover; display:block}
-
-.hero h1{margin:0; font-size:36px; font-weight:700; letter-spacing:-0.4px}
-.hero p.lead{margin:8px 0 14px; color:rgba(255,255,255,0.9); font-weight:500; font-size:16px;}
-.hero .meta{color:rgba(255,255,255,0.85); font-size:14px; margin-bottom:6px;}
-.hero .actions{margin-top:18px; display:flex; gap:12px; justify-content:center;}
-.btn{
-  padding:10px 18px; border-radius:10px; font-weight:600; text-decoration:none; cursor:pointer;
-  display:inline-flex; gap:10px; align-items:center; border:0;
-  transition:transform .16s ease, box-shadow .16s;
-}
-.btn.primary{background:var(--accent); color:white; box-shadow:0 6px 18px rgba(23,105,167,0.25);}
-.btn.ghost{background:rgba(255,255,255,0.08); color:white; border:1px solid rgba(255,255,255,0.1);}
-.btn:hover{transform:translateY(-3px); box-shadow:0 10px 25px rgba(0,0,0,0.35);}
-
-/* ---------------- MAIN ---------------- */
-main{
-  padding:48px 16px 80px;
-  max-width:1100px;
-  margin:0 auto;
-}
-
-
-.section.active{display:block}.section h2 {
-    margin-top: 0;
-    color: var(--nav);
-    font-size: 24px;
-    margin-bottom: 12px;
-
-    /* Fix overlapping by navbar */
-    scroll-margin-top: 80px; /* matches navbar + some padding */
-}
-
-.muted{color:var(--muted); font-size:14px; margin-bottom:12px}
-.two-col{display:grid; grid-template-columns: 1fr 1fr; gap:20px;}
-ul.clean{padding-left:18px; margin:12px 0}
-li{margin:8px 0; line-height:1.6}
-
-/* Certificates list */
-.cert-list{display:flex; flex-direction:column; gap:10px}
-.cert-item{
-  display:flex; align-items:center; justify-content:space-between;
-  padding:12px 16px; border-radius:12px; background:#ffffff;
-  border:1px solid rgba(9,30,63,0.08); box-shadow:0 6px 15px rgba(0,0,0,0.05);
-}
-.cert-item a{color:var(--primary); text-decoration:none; font-weight:600}
-
-/* Back buttons */
-.back-home{display:inline-block; margin-top:20px; text-decoration:none; padding:10px 16px; background:#0f2540; color:white; border-radius:10px; font-weight:600; transition:all .2s ease;}
-.back-home:hover{background:#142b50; transform:translateY(-2px);}
 
 /* Responsive */
-@media (max-width:880px){
-  .hero .card{grid-template-columns: 140px 1fr;}
-  .avatar{width:140px;height:140px;}
-}
-@media (max-width:680px){
-  .hero{padding:20px;}
-  .nav .links{display:none;}
-  .hero h1{font-size:28px;}
-  .hero p.lead{font-size:14px;}
-  .two-col{grid-template-columns:1fr;}
-}
+@media (max-width:880px){ .hero-photo img{width:140px;height:140px;} }
+@media (max-width:680px){ .hero{padding:20px;} .nav .links{display:none;} }
+
 </style>
 </head>
 <body>
@@ -323,48 +176,27 @@ li{margin:8px 0; line-height:1.6}
       <a href="#" class="nav-link" data-target="achievements">Achievements</a>
       <a href="#" class="nav-link" data-target="languages">Languages</a>
       <a href="#" class="nav-link" data-target="contact">Contact</a>
-
     </div>
   </div>
 </nav>
 
+<!-- HERO -->
 <header class="hero" id="homeView">
   <div class="hero-overlay"></div>
-
   <div class="hero-container">
-
-    <!-- LEFT: Profile Image -->
-    <div class="hero-photo">
-      <img src="MMM.jpg" alt="Profile Photo">
-    </div>
-
-    <!-- RIGHT TEXT -->
+    <div class="hero-photo"><img src="MMM.jpg" alt="Profile Photo"></div>
     <div class="hero-text">
       <h1 class="hero-name">Kanwar Abdul Rehman</h1>
       <h2 class="hero-title">Instrumentation & Control Engineer</h2>
-
-      <p class="hero-sub">
-        Power Plants • Industrial Automation • Process Control • Safety Systems
-      </p>
-
-      <p class="hero-meta">
-        Faisalabad, Pakistan · <strong>+92 337 991 7733</strong> ·
-        <a href="mailto:ranakanwarkhan@gmail.com">ranakanwarkhan@gmail.com</a>
-      </p>
-
+      <p class="hero-sub">Power Plants • Industrial Automation • Process Control • Safety Systems</p>
+      <p class="hero-meta">Faisalabad, Pakistan · <strong>+92 337 991 7733</strong> · <a href="mailto:ranakanwarkhan@gmail.com">ranakanwarkhan@gmail.com</a></p>
       <div class="hero-buttons">
-        <button class="btn primary" onclick="openSection('profile')">View Profile</button>
-        <a class="btn ghost" href="https://www.linkedin.com/in/kanwar-abdul-rehman-b5330b253" target="_blank">
-          LinkedIn
-        </a>
+        <button class="btn primary" onclick="showSection('profile')">View Profile</button>
+        <a class="btn ghost" href="https://www.linkedin.com/in/kanwar-abdul-rehman-b5330b253" target="_blank">LinkedIn</a>
       </div>
-
     </div>
-
   </div>
 </header>
-
-
 
 <section id="profile" class="section" style="display:block;">
     <h2>Profile Summary</h2>
@@ -542,6 +374,7 @@ showHome();
 
 </body>
 </html>
+
 
 
 
