@@ -6,6 +6,31 @@
 <title>Kanwar Abdul Rehman — Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
+    .linkedin-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #0a66c2;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.linkedin-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 18px rgba(10, 102, 194, 0.4);
+}
+
+.linkedin-btn img {
+    width: 20px;
+    height: 20px;
+}
+
     /* === CYBERPUNK HOLOGRAPHIC GRID BACKGROUND === */
 body {
     background: #020617;
@@ -90,6 +115,38 @@ a.button,
     background-size: 400% 400%;
     opacity: 0.7;
 }
+    .social-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.social-buttons a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    background: #0a66c2; /* LinkedIn blue */
+    color: white;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Hover effect */
+.social-buttons a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 18px rgba(10, 102, 194, 0.4);
+}
+
+/* Optional: icon sizing */
+.social-buttons a img {
+    width: 20px;
+    height: 20px;
+}
+
 
 button:hover,
 a.button:hover,
@@ -410,8 +467,12 @@ li{margin:8px 0; line-height:1.6}
       <p class="hero-sub">Power Plants • Industrial Automation • Process Control • Safety Systems</p>
       <p class="hero-meta">Faisalabad, Pakistan · <strong>+92 337 991 7733</strong> · <a href="mailto:ranakanwarkhan@gmail.com">ranakanwarkhan@gmail.com</a></p>
       <div class="hero-buttons">
-        <button class="btn primary" onclick="openSection('profile')">View Profile</button>
-        <a class="btn ghost" href="https://www.linkedin.com/in/kanwar-abdul-rehman-b5330b253" target="_blank">LinkedIn</a>
+    <button class="btn primary" onclick="openSection('profile')">View Profile</button>
+
+    <a href="https://www.linkedin.com/in/kanwarabdulrehman" target="_blank" class="btn linkedin-btn">
+        <img src="linkedin-icon.svg" alt="LinkedIn">
+        LinkedIn
+    </a>
       </div>
     </div>
   </div>
@@ -615,6 +676,7 @@ showHome();
     
 </body>
 </html>
+
 
 
 
