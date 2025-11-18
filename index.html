@@ -6,6 +6,123 @@
 <title>Kanwar Abdul Rehman — Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
+    /* === CYBERPUNK HOLOGRAPHIC GRID BACKGROUND === */
+body {
+    background: #020617;
+    background-image:
+        linear-gradient(rgba(0,255,255,0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,255,0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+    from { background-position: 0 0; }
+    to   { background-position: 400px 400px; }
+}
+
+
+/* === SECTION CONTAINER (keeps previous neon/glass styles) === */
+.section {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+/* === 3D Tilt Effect === */
+.section:hover {
+    transform: rotateY(8deg) rotateX(8deg) scale(1.02);
+}
+
+
+/* === SECTION TITLE WITH NEON ACCENT LINE === */
+.section h2 {
+    position: relative;
+}
+
+.section h2::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 4px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #00eaff, #ff00ff, #00ffaa);
+    box-shadow: 0 0 10px #00eaff;
+}
+
+
+/* === CYBERPUNK BUTTONS === */
+button,
+a.button,
+.back-home {
+    display: inline-block;
+    padding: 12px 28px;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: 2px solid #00eaff;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #00eaff;
+    background: rgba(0, 0, 0, 0.3);
+    text-shadow: 0 0 7px #00eaff;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    transition: 0.3s ease;
+}
+
+button:hover,
+a.button:hover,
+.back-home:hover {
+    background: #00eaff;
+    color: #000;
+    box-shadow: 
+        0 0 20px #00eaff,
+        0 0 40px #00eaff,
+        0 0 60px #00eaff;
+    transform: scale(1.08);
+}
+
+/* === SCROLL REVEAL ANIMATIONS === */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 1s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* zoom variant */
+.reveal.zoom {
+    transform: scale(0.8);
+}
+
+.reveal.zoom.visible {
+    transform: scale(1);
+}
+
+/* slide-left variant */
+.reveal.left {
+    transform: translateX(-40px);
+}
+
+.reveal.left.visible {
+    transform: translateX(0);
+}
+
+/* slide-right variant */
+.reveal.right {
+    transform: translateX(40px);
+}
+
+.reveal.right.visible {
+    transform: translateX(0);
+}
+
     /* === SEXY SECTION STYLING === */
 .section {
     position: relative;
@@ -479,12 +596,26 @@ navLinks.forEach(link=>{
         showSection(link.getAttribute('data-target'));
     });
 });
+function revealSections() {
+    const reveals = document.querySelectorAll(".reveal");
+    for (const el of reveals) {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) {
+            el.classList.add("visible");
+        }
+    }
+}
 
+window.addEventListener("scroll", revealSections);
+window.addEventListener("load", revealSections);
 // Initially show home
 showHome();
+    
 </script>
+    
 </body>
 </html>
+
 
 
 
