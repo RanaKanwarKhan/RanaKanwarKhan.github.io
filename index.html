@@ -348,11 +348,12 @@ function showSection(id) {
     } else {
         hero.style.display = 'none';
         const target = document.getElementById(id);
-        if (target) {
-            target.style.display = 'block';  // <-- use 'block', not 'flex'
-            target.classList.add('active');
-            target.scrollIntoView({ behavior: 'smooth' });
-        }
+       if (target) {
+    target.style.display = 'block';   // Show the section
+    target.classList.add('active');    // Add the 'active' class
+    target.scrollIntoView({ behavior: 'smooth' }); // Scroll to it
+}
+
     }
 
     // Update nav links
@@ -374,6 +375,7 @@ showHome();
 
 </body>
 </html>
+
 
 
 
