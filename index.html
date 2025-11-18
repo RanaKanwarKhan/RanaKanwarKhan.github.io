@@ -6,31 +6,6 @@
 <title>Kanwar Abdul Rehman — Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-    .linkedin-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: #0a66c2;
-    color: white;
-    border: none;
-    padding: 12px 22px;
-    border-radius: 12px;
-    font-weight: 600;
-    font-size: 15px;
-    text-decoration: none;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.linkedin-btn:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 18px rgba(10, 102, 194, 0.4);
-}
-
-.linkedin-btn img {
-    width: 20px;
-    height: 20px;
-}
-
     /* === CYBERPUNK HOLOGRAPHIC GRID BACKGROUND === */
 body {
     background: #020617;
@@ -362,27 +337,97 @@ body{
   transform:translateY(-2px);
 }
 
-/* ---------------- HERO ---------------- */
+/* Hero background */
 .hero {
-  position: relative;
-  height: calc(100vh - 64px);
-  margin-top: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 50px;
-  background:
-    linear-gradient(135deg, rgba(3,12,28,0.90) 0%, rgba(4,20,48,0.85) 40%, rgba(5,25,60,0.75) 100%),
-    url("turbine.jpg") center/cover no-repeat;
-  color: white;
-  letter-spacing: 0.3px;
+    position: relative;
+    height: calc(100vh - 64px);
+    margin-top: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    background: linear-gradient(135deg, #030c1c 0%, #041430 100%);
+    color: #fff;
+    letter-spacing: 0.3px;
 }
+
+/* Hero photo */
+.hero-photo img {
+    width: 270px;
+    height: 270px;
+    object-fit: cover;
+    border-radius: 18px;
+    border: 4px solid rgba(255,255,255,0.15);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
+}
+.hero-photo img:hover { transform: scale(1.03); }
+
+/* Hero text */
+.hero-name { font-size: 52px; font-weight: 800; color: #fff; margin:0; }
+.hero-title { font-size: 24px; color: #AED7FF; margin: 10px 0 20px; font-weight:500; }
+.hero-sub { font-size: 17px; color: #e7f5ff; margin-bottom:14px; }
+.hero-meta { font-size:15px; color:#d9ebff; margin-bottom:25px; }
+.hero-meta a { color:#85c8ff; text-decoration:none; font-weight:600; }
+.hero-meta a:hover { text-decoration: underline; }
+
+/* Hero Buttons */
+.hero-buttons {
+    display: flex;
+    gap: 14px;
+}
+
+/* Primary Button */
+.btn.primary {
+    background: #7DDA58;
+    color: #0b1b2d;
+    padding: 12px 22px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.btn.primary:hover { 
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(125,218,88,0.4);
+}
+
+/* LinkedIn Button Modern UI */
+.linkedin-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #0a66c2;
+    color: #fff;
+    padding: 12px 22px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.linkedin-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(10,102,194,0.5);
+}
+.linkedin-btn img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Optional subtle cyberpunk grid overlay */
 .hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 35% 40%, rgba(255,255,255,0.18), transparent 70%);
-  pointer-events: none;
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,255,0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
 }
+
 .hero-container {
   position: relative;
   max-width: 1250px;
@@ -454,7 +499,6 @@ li{margin:8px 0; line-height:1.6}
   </div>
 </nav>
 
-<!-- HERO -->
 <header class="hero" id="homeView">
   <div class="hero-overlay"></div>
   <div class="hero-container">
@@ -466,17 +510,21 @@ li{margin:8px 0; line-height:1.6}
       <h2 class="hero-title">Instrumentation & Control Engineer</h2>
       <p class="hero-sub">Power Plants • Industrial Automation • Process Control • Safety Systems</p>
       <p class="hero-meta">Faisalabad, Pakistan · <strong>+92 337 991 7733</strong> · <a href="mailto:ranakanwarkhan@gmail.com">ranakanwarkhan@gmail.com</a></p>
+      
+      <!-- Modern Hero Buttons -->
       <div class="hero-buttons">
-    <button class="btn primary" onclick="openSection('profile')">View Profile</button>
-
-    <a href="https://www.linkedin.com/in/kanwarabdulrehman" target="_blank" class="btn linkedin-btn">
-        <img src="linkedin-icon.png" alt="LinkedIn">
-        LinkedIn
-    </a>
+        <button class="btn primary" onclick="openSection('profile')">View Profile</button>
+        
+        <!-- LinkedIn Button -->
+        <a href="https://www.linkedin.com/in/kanwarabdulrehman" target="_blank" class="btn linkedin-btn">
+          <img src="linkedin-icon.svg" alt="LinkedIn">
+          LinkedIn
+        </a>
       </div>
     </div>
   </div>
 </header>
+
 
 <main>
   <section id="profile" class="section reveal" style="display:block;">
@@ -676,6 +724,7 @@ showHome();
     
 </body>
 </html>
+
 
 
 
