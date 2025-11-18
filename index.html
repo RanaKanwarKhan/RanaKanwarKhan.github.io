@@ -9,15 +9,30 @@
 
 <style>
 /* ---------------- PRINT ---------------- */
-@media print {
-    body { margin: 0; padding: 0; }
-    .page-border { box-sizing: border-box; border: 12px solid #1A4B7A; margin: 20px; padding: 30px; min-height: 95vh; break-after: page; }
-    .section, .menu { background: white !important; }
-    .title-page { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .section {
-    page-break-before: always;
-    break-before: page;
+.section {
+    display: none;           /* Hidden by default */
+    min-height: calc(100vh - 64px); /* Full viewport height minus navbar */
+    padding: 40px 30px;
+    background: var(--card);
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+    scroll-margin-top: 64px; /* navbar height */
 }
+
+/* Print: force each section on separate page */
+@media print {
+    .section {
+        display: block !important;
+        page-break-before: always;
+        break-before: page;
+    }
+    .hero {
+        page-break-after: always;
+        break-after: page;
+    }
+}
+
 
 /* Hero Title Page Ends With Page Break */
 .hero {
@@ -506,48 +521,39 @@ function showSection(id) {
         s.style.display = 'none';
     });
 
+    // Hero (home) handling
     if (id === 'home') {
-        // Show hero section (home)
+        hero.style.display = 'flex';
         hero.scrollIntoView({ behavior: 'smooth' });
     } else {
+        hero.style.display = 'none'; // hide hero when any section is active
         const target = document.getElementById(id);
         if (target) {
+            target.style.display = 'flex';  // full screen
             target.classList.add('active');
-            target.style.display = 'block';
-
-            // Scroll accounting for navbar height
-            const navbarHeight = document.querySelector('.nav').offsetHeight;
-            const sectionTop = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 10;
-            window.scrollTo({ top: sectionTop, behavior: 'smooth' });
+            target.scrollIntoView({ behavior: 'smooth' });
         }
     }
 
-    // Update active state for nav links
+    // Update nav links active state
     navLinks.forEach(link => link.classList.remove('active'));
     const activeLink = document.querySelector(`.nav-link[data-target="${id}"]`);
     if (activeLink) activeLink.classList.add('active');
 }
 
-// Event listeners for nav links
-navLinks.forEach(link => {
-    link.addEventListener('click', e => {
-        e.preventDefault();
-        const target = link.getAttribute('data-target');
-        showSection(target);
-    });
-});
-
-// Function for buttons
+// Buttons
 function openSection(id) { showSection(id); }
 function showHome() { showSection('home'); }
 
-// Initially show hero (home)
+// Initially show hero
 showHome();
+
 </script>
 
 
 </body>
 </html>
+
 
 
 
