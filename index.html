@@ -334,7 +334,6 @@ const navLinks = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('.section');
 const hero = document.querySelector('.hero');
 
-// Function to show a section
 function showSection(id) {
     // Hide all sections
     sections.forEach(s => {
@@ -342,25 +341,26 @@ function showSection(id) {
         s.style.display = 'none';
     });
 
-    // Hero (home) handling
+    // Show hero
     if (id === 'home') {
         hero.style.display = 'flex';
         hero.scrollIntoView({ behavior: 'smooth' });
     } else {
-        hero.style.display = 'none'; // hide hero when any section is active
+        hero.style.display = 'none';
         const target = document.getElementById(id);
         if (target) {
-            target.style.display = 'flex';  // full screen
+            target.style.display = 'block';  // <-- use 'block', not 'flex'
             target.classList.add('active');
             target.scrollIntoView({ behavior: 'smooth' });
         }
     }
 
-    // Update nav links active state
+    // Update nav links
     navLinks.forEach(link => link.classList.remove('active'));
     const activeLink = document.querySelector(`.nav-link[data-target="${id}"]`);
     if (activeLink) activeLink.classList.add('active');
 }
+
 
 // Buttons
 function openSection(id) { showSection(id); }
@@ -374,6 +374,7 @@ showHome();
 
 </body>
 </html>
+
 
 
 
