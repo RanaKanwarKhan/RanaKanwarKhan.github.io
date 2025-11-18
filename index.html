@@ -318,6 +318,8 @@ li{margin:8px 0; line-height:1.6}
       <a href="#" class="nav-link" data-target="certifications">Certifications</a>
       <a href="#" class="nav-link" data-target="achievements">Achievements</a>
       <a href="#" class="nav-link" data-target="languages">Languages</a>
+      <a href="#" class="nav-link" data-target="contact">Contact</a>
+
     </div>
   </div>
 </nav>
@@ -491,71 +493,62 @@ li{margin:8px 0; line-height:1.6}
 </main>
 
 <script>
-// Get nav links and sections
+// Get nav links, sections, and hero
 const navLinks = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('.section');
-const hero = document.querySelector('.hero'); // Home section
-/* ---- FORCE EVERY SECTION ON SEPARATE PAGE ---- */
-
+const hero = document.querySelector('.hero');
 
 // Function to show a section
 function showSection(id) {
-  // Hide all sections
-  sections.forEach(s => {
-    s.classList.remove('active');
-    s.style.display = 'none';
-  });
+    // Hide all sections
+    sections.forEach(s => {
+        s.classList.remove('active');
+        s.style.display = 'none';
+    });
 
-  // Show the target section
-  if (id === 'home') {
-    hero.scrollIntoView({ behavior: 'smooth' });
-  } else {
-    const target = document.getElementById(id);
-    if (target) {
-      target.classList.add('active');
-      target.style.display = 'block';
+    if (id === 'home') {
+        // Show hero section (home)
+        hero.scrollIntoView({ behavior: 'smooth' });
+    } else {
+        const target = document.getElementById(id);
+        if (target) {
+            target.classList.add('active');
+            target.style.display = 'block';
 
-      // Scroll accounting for fixed navbar
-      const navbarHeight = document.querySelector('.nav').offsetHeight;
-      const sectionTop = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 10; // 10px padding
-      window.scrollTo({ top: sectionTop, behavior: 'smooth' });
+            // Scroll accounting for navbar height
+            const navbarHeight = document.querySelector('.nav').offsetHeight;
+            const sectionTop = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 10;
+            window.scrollTo({ top: sectionTop, behavior: 'smooth' });
+        }
     }
-  }
 
-  // Update nav link active state
-  navLinks.forEach(link => link.classList.remove('active'));
-  const activeLink = document.querySelector(`.nav-link[data-target="${id}"]`);
-  if (activeLink) activeLink.classList.add('active');
+    // Update active state for nav links
+    navLinks.forEach(link => link.classList.remove('active'));
+    const activeLink = document.querySelector(`.nav-link[data-target="${id}"]`);
+    if (activeLink) activeLink.classList.add('active');
 }
 
-// Add click event to nav links
+// Event listeners for nav links
 navLinks.forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    const target = link.getAttribute('data-target');
-    showSection(target);
-  });
+    link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = link.getAttribute('data-target');
+        showSection(target);
+    });
 });
 
-// Function for "View Profile" button
+// Function for buttons
 function openSection(id) { showSection(id); }
-
-// Function for "Back to Home" buttons
 function showHome() { showSection('home'); }
-function openSection(id) {
-    showSection(id);
-    document.querySelectorAll(".nav-link").forEach(a => a.classList.remove("active"));
-    document.querySelector(`.nav-link[data-target="${id}"]`)?.classList.add("active");
-}
 
-// Initially show Hero
+// Initially show hero (home)
 showHome();
-
 </script>
 
 
 </body>
 </html>
+
 
 
 
