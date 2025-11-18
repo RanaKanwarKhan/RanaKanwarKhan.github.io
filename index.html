@@ -71,6 +71,25 @@ a.button,
     box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
     transition: 0.3s ease;
 }
+/* === Animated Outer Border === */
+.section::before, .section::after {
+    content: '';
+    position: absolute;
+    top: -2px; left: -2px; right: -2px; bottom: -2px;
+    border-radius: 20px;
+    z-index: -1;
+    animation: rotateBorder 6s linear infinite;
+    background: linear-gradient(
+        45deg,
+        #00eaff,
+        #0066ff,
+        #ff00ff,
+        #ff0099,
+        #00ffaa
+    );
+    background-size: 400% 400%;
+    opacity: 0.7;
+}
 
 button:hover,
 a.button:hover,
@@ -596,6 +615,7 @@ showHome();
     
 </body>
 </html>
+
 
 
 
