@@ -23,34 +23,61 @@ body {
 
 
 /* === SECTION CONTAINER (keeps previous neon/glass styles) === */
+/* Section background with turbine image */
 .section {
-    transform-style: preserve-3d;
-    perspective: 1000px;
-}
-
-/* === 3D Tilt Effect === */
-.section:hover {
-    transform: rotateY(8deg) rotateX(8deg) scale(1.02);
-}
-
-
-/* === SECTION TITLE WITH NEON ACCENT LINE === */
-.section h2 {
     position: relative;
+    padding: 60px 40px;
+    margin: 60px auto;
+    border-radius: 20px;
+    
+    /* Turbine background */
+    background: url('turbine.png') center/cover no-repeat;
+    
+    /* Glass overlay for readability */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background-color: rgba(0, 0, 0, 0.45); /* dark overlay */
+    
+    color: #fff;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    overflow: hidden;
 }
 
+/* Hover effect: subtle 3D tilt + glow */
+.section:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 0 25px rgba(255,255,255,0.2),
+                0 0 50px rgba(255,255,255,0.1);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Section titles */
+.section h2 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #fff;
+    text-shadow: 0 0 8px rgba(0,0,0,0.6);
+}
+
+/* Paragraphs inside sections */
+.section p, .section li {
+    color: #f0f0f0;
+}
+
+/* Optional: subtle animated accent line under section titles */
 .section h2::after {
     content: "";
-    position: absolute;
-    left: 50%;
-    bottom: -10px;
-    transform: translateX(-50%);
-    width: 120px;
-    height: 4px;
-    border-radius: 4px;
-    background: linear-gradient(90deg, #00eaff, #ff00ff, #00ffaa);
-    box-shadow: 0 0 10px #00eaff;
+    display: block;
+    width: 100px;
+    height: 3px;
+    margin: 12px auto 0;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.6);
 }
+
 
 
 /* === CYBERPUNK BUTTONS === */
@@ -724,6 +751,7 @@ showHome();
     
 </body>
 </html>
+
 
 
 
