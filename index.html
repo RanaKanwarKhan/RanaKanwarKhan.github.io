@@ -44,6 +44,60 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.15);
     overflow: hidden;
 }
+.doc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.doc-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 14px 18px;
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: 0.25s ease;
+}
+
+.doc-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 18px rgba(0,0,0,0.35);
+}
+
+.doc-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.doc-icon {
+  width: 28px;
+  height: 28px;
+}
+
+.doc-btn {
+  padding: 10px 18px;
+  background: #00eaff;
+  color: #000;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: 0.25s ease;
+}
+
+.doc-btn:hover {
+  background: #fff;
+  color: #000;
+  transform: translateY(-2px);
+}
 
 /* Subtle hover effect */
 .section:hover {
@@ -503,12 +557,13 @@ li{margin:8px 0; line-height:1.6}
       <a href="#" class="nav-link active" data-target="home">Home</a>
       <a href="#" class="nav-link" data-target="profile">Profile</a>
       <a href="#" class="nav-link" data-target="experience">Experience</a>
+      <a href="#" class="nav-link" data-target="documents">Documents</a>
       <a href="#" class="nav-link" data-target="skills">Skills</a>
       <a href="#" class="nav-link" data-target="education">Education</a>
       <a href="#" class="nav-link" data-target="certifications">Certifications</a>
       <a href="#" class="nav-link" data-target="achievements">Achievements</a>
       <a href="#" class="nav-link" data-target="languages">Languages</a>
-        <a href="#" class="nav-link" data-target="contact">Contact</a>
+      <a href="#" class="nav-link" data-target="contact">Contact</a>
     </div>
   </div>
 </nav>
@@ -576,6 +631,39 @@ li{margin:8px 0; line-height:1.6}
         <li>Observed control room operations, alarms, and interlock philosophy; learned basics of loop integrity and field coordination.</li>
     </ul>
   </section>
+<section id="documents" class="section reveal">
+  <h2>Documents</h2>
+  <p class="muted">Download and view my professional documents, reports, and technical files.</p>
+
+  <div class="doc-list">
+
+    <!-- Example Document Card -->
+    <div class="doc-item">
+      <div class="doc-info">
+        <img src="pdf-icon.png" class="doc-icon" alt="">
+        <span>Resume — Kanwar Abdul Rehman</span>
+      </div>
+      <a href="Resume.pdf" download class="doc-btn">Download</a>
+    </div>
+
+    <div class="doc-item">
+      <div class="doc-info">
+        <img src="pdf-icon.png" class="doc-icon" alt="">
+        <span>Power Plant Internship Report</span>
+      </div>
+      <a href="Internship_Report.pdf" download class="doc-btn">Download</a>
+    </div>
+
+    <div class="doc-item">
+      <div class="doc-info">
+        <img src="pdf-icon.png" class="doc-icon" alt="">
+        <span>Control & Instrumentation Project Files</span>
+      </div>
+      <a href="Project_Files.zip" download class="doc-btn">Download</a>
+    </div>
+
+  </div>
+</section>
 
   <section id="skills" class="section reveal">
     <h2>Core Technical Skills</h2>
@@ -738,6 +826,7 @@ showHome();
     
 </body>
 </html>
+
 
 
 
