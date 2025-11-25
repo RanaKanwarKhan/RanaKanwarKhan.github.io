@@ -484,6 +484,35 @@ body{
     width: 20px;
     height: 20px;
 }
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.achievements-list {
+  list-style: none;
+  padding-left: 0;
+  line-height: 1.6;
+}
+
+.achievements-list li::before {
+  content: "• ";
+  color: #4ade80; /* soft green bullet (optional) */
+  font-weight: bold;
+}
+
+.back-home {
+  display: inline-block;
+  margin-top: 1.5rem;
+  color: #0ea5e9;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.back-home:hover {
+  text-decoration: underline;
+}
 
 /* Optional subtle cyberpunk grid overlay */
 .hero-overlay {
@@ -731,17 +760,43 @@ li{margin:8px 0; line-height:1.6}
   <a class="back-home" href="#" onclick="showHome();return false;">Back to Home</a>
   </section>
 
+<!-- Achievements -->
+<section id="achievements" class="section reveal">
+  <h2 class="section-title">Achievements</h2>
 
-  <!-- Achievements -->
-  <section id="achievements" class="section reveal">
-    <h2>Achievements</h2>
-    <ul class="clean">
-      <li>Supported turbine startup & shutdown vibration diagnostic checks</li>
-      <li>Helped commission Bently Nevada 3500 vibration monitoring rack</li>
-      <li>Assisted commissioning of 17kA Rectifier and 100A Polarizer</li>
-    </ul>
-    <a class="back-home" href="#" onclick="showHome();return false;">Back to Home</a>
-  </section>
+  <ul class="achievements-list">
+    <!-- Turbine & Vibration -->
+    <li>Supported turbine startup & shutdown vibration diagnostic checks</li>
+    <li>Helped commission the Bently Nevada 3500 vibration monitoring rack</li>
+    <li>Performed vibration trending and anomaly detection during critical turbine operations</li>
+    <li>Assisted in verifying proximitor calibrations and sensor health checks</li>
+
+    <!-- Power Electronics -->
+    <li>Assisted commissioning of a 17kA Rectifier and a 100A Polarizer</li>
+    <li>Verified interlocks, protections, and control sequencing during system energization</li>
+    <li>Supported troubleshooting of high-current DC systems and resolving grounding issues</li>
+
+    <!-- Automation & Instrumentation -->
+    <li>Worked with PLC/SCADA teams to validate instrumentation loops and alarms</li>
+    <li>Participated in FAT/SAT testing of control logic for rotating machinery</li>
+    <li>Assisted with calibration of temperature, pressure, and vibration sensors</li>
+
+    <!-- Site Support -->
+    <li>Supported field teams during mechanical run tests and performance trials</li>
+    <li>Helped conduct lube oil flushing and cleanliness verification</li>
+    <li>Participated in safety walkthroughs and equipment isolation checks</li>
+
+    <!-- Documentation & Project Work -->
+    <li>Created technical reports for diagnostics, commissioning progress, and post-test summaries</li>
+    <li>Improved documentation for equipment startup and shutdown procedures</li>
+    <li>Maintained logs for vibration trends, alarms, and system configuration changes</li>
+    <li>Coordinated with multidisciplinary teams during commissioning activities</li>
+    <li>Contributed to knowledge-sharing sessions for interns and junior engineers</li>
+  </ul>
+
+  <a class="back-home" href="#" onclick="showHome(); return false;">Back to Home</a>
+</section>
+
 
    <!-- Languages -->
   <section id="languages" class="section reveal">
@@ -826,6 +881,7 @@ showHome();
     
 </body>
 </html>
+
 
 
 
